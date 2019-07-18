@@ -11,28 +11,27 @@
 #
 # Happy Coding!
 
-service: serverless-go-boilerplate
+service: bicycle-on-rent
 
 provider:
   name: aws
   runtime: go1.x
   stage: dev
-  region: ap-southeast-1
+  region: us-west-2
 
 package:
- individually: true
  exclude:
    - ./**
+ include:
+   - ./bin/**
 
 functions:
-  hello:
-    handler: bin/handlers/hello
-    package:
-     include:
-       - ./bin/handlers/hello
+  GetlistOfCycles:
+    handler: bin/handlers/ListBicycle
+
     events:
       - http:
-          path: hello
+          path: GetlistOfCycles
           method: get
           cors: true
 

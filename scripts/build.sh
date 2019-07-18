@@ -10,6 +10,7 @@ cd src/handlers/
 for f in *.go; do
   filename="${f%.go}"
   if GOOS=linux go build -o "../../bin/handlers/$filename" ${f}; then
+  #if env GOOS=linux go build -v -ldflags '-d -s -w' -a -tags netgo -installsuffix netgo -o "../../bin/handlers/$filename" ${f}; then
     echo "✓ Compiled $filename"
   else
     echo "✕ Failed to compile $filename!"
